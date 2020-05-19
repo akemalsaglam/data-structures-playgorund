@@ -63,10 +63,12 @@ public class CustomLinkedList<T> {
 
     public void addLast(T data) {
         Node tempNode = new Node(data, null);
-        this.tail.next = tempNode;
-        this.tail = tempNode;
         if (this.size == 0) {
             this.head = tempNode;
+            this.tail = tempNode;
+        }else{
+            this.tail.next = tempNode;
+            this.tail = tempNode;
         }
         this.size++;
     }
@@ -139,12 +141,23 @@ public class CustomLinkedList<T> {
         }
     }
 
+    public int size(){
+       return size;
+    }
+
     public void display() {
         Node temp = this.head;
         while (temp != null) {
             System.out.println(temp.data);
             temp = temp.next;
         }
+    }
+
+    public static void main(String[] args) {
+        CustomLinkedList<String> list = new CustomLinkedList<String>();
+        list.addFirst("ezgi");
+        list.addLast("ali");
+        list.display();
     }
 
 
