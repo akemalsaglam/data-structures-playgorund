@@ -4,7 +4,11 @@ import datastructure.CustomArrayList;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Random;
+
 public class CustomArrayListTest {
+
+    private Random random = new Random();
 
     @Test
     public void test1() {
@@ -87,4 +91,45 @@ public class CustomArrayListTest {
         CustomArrayList<Integer> list = new CustomArrayList<Integer>();
         list.get(3);
     }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void test5() {
+        CustomArrayList<Integer> list = new CustomArrayList<Integer>();
+        list.add(1);
+        list.get(1);
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void test6() {
+        CustomArrayList<String> list = new CustomArrayList<String>();
+        list.add(null);
+        list.get(1);
+    }
+
+    @Test()
+    public void test7() {
+        int randomNumber = random.nextInt(10000) + 10000;
+        CustomArrayList<Integer> list = new CustomArrayList<Integer>();
+        for (int i = 0; i < randomNumber; i++) {
+            list.add(i);
+        }
+        Assert.assertEquals(randomNumber, list.size());
+    }
+
+    @Test()
+    public void test8() {
+        int randomNumber = random.nextInt(100000) + 100000;
+        CustomArrayList<Integer> list = new CustomArrayList<Integer>();
+        for (int i = 0; i < randomNumber; i++) {
+            list.add(i);
+        }
+        Assert.assertEquals(randomNumber, list.size());
+
+        int extractNumber = random.nextInt(10000) + 10000;
+        for (int i = 0; i < extractNumber; i++) {
+            list.remove(i);
+        }
+        Assert.assertEquals(randomNumber - extractNumber, list.size());
+    }
+
 }
