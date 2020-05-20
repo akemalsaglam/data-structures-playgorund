@@ -66,7 +66,7 @@ public class CustomLinkedList<T> {
         if (this.size == 0) {
             this.head = tempNode;
             this.tail = tempNode;
-        }else{
+        } else {
             this.tail.next = tempNode;
             this.tail = tempNode;
         }
@@ -141,8 +141,26 @@ public class CustomLinkedList<T> {
         }
     }
 
-    public int size(){
-       return size;
+    public int size() {
+        return size;
+    }
+
+    public void reverse() {
+        if (size != 0) {
+            Node cursorNode = this.head;
+            Node nextNode;
+            Node previousNode = null;
+            while (cursorNode != null) {
+                nextNode = cursorNode.next;
+                cursorNode.next = previousNode;
+                previousNode = cursorNode;
+                cursorNode = nextNode;
+            }
+            this.tail = this.head;
+            this.head = previousNode;
+
+        }
+
     }
 
     public void display() {

@@ -49,4 +49,16 @@ public class CustomLinkedListTest {
         Assert.assertEquals(3,  list.size());
     }
 
+    @Test
+    public void test5() throws Exception {
+        CustomLinkedList<Integer> list = new CustomLinkedList<Integer>();
+        list.addLast(13);
+        list.addFirst(24);
+        list.addAt(1,33);
+        list.display();
+
+        list.reverse();
+        list.display();
+    }
+
 }
