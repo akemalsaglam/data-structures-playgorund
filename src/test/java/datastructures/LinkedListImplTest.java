@@ -1,18 +1,18 @@
 package datastructures;
 
-import datastructure.CustomLinkedList;
+import datastructure.impl.LinkedListImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Random;
 
-public class CustomLinkedListTest {
+public class LinkedListImplTest {
 
     private Random random = new Random();
 
     @Test
     public void test1() throws Exception {
-        CustomLinkedList<Integer> list = new CustomLinkedList<Integer>();
+        LinkedListImpl<Integer> list = new LinkedListImpl<Integer>();
         list.addFirst(89);
         Assert.assertEquals(89, (int) list.getFirst());
         Assert.assertEquals(89, (int) list.getLast());
@@ -21,7 +21,7 @@ public class CustomLinkedListTest {
 
     @Test
     public void test2() throws Exception {
-        CustomLinkedList<Integer> list = new CustomLinkedList<Integer>();
+        LinkedListImpl<Integer> list = new LinkedListImpl<Integer>();
         list.addLast(13);
         Assert.assertEquals(13, (int) list.getFirst());
         Assert.assertEquals(13, (int) list.getLast());
@@ -30,7 +30,7 @@ public class CustomLinkedListTest {
 
     @Test
     public void test3() throws Exception {
-        CustomLinkedList<Integer> list = new CustomLinkedList<Integer>();
+        LinkedListImpl<Integer> list = new LinkedListImpl<Integer>();
         list.addLast(13);
         list.addFirst(24);
         Assert.assertEquals(24, (int) list.getFirst());
@@ -40,7 +40,7 @@ public class CustomLinkedListTest {
 
     @Test
     public void test4() throws Exception {
-        CustomLinkedList<Integer> list = new CustomLinkedList<Integer>();
+        LinkedListImpl<Integer> list = new LinkedListImpl<Integer>();
         list.addLast(13);
         list.addFirst(24);
         list.addAt(1,33);
@@ -51,7 +51,7 @@ public class CustomLinkedListTest {
 
     @Test
     public void test5() throws Exception {
-        CustomLinkedList<Integer> list = new CustomLinkedList<Integer>();
+        LinkedListImpl<Integer> list = new LinkedListImpl<Integer>();
         list.addLast(13);
         list.addFirst(24);
         list.addAt(1,33);

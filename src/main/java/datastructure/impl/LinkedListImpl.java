@@ -1,10 +1,12 @@
-package datastructure;
+package datastructure.impl;
 
-public class CustomLinkedList<T> {
+import datastructure.LinkedList;
+import datastructure.error.LinkedListException;
 
-    private class Node<T> {
+public class LinkedListImpl<T> implements LinkedList<T> {
 
-        public Node(T data, Node next) {
+    private static class Node<T> {
+        private Node(T data, Node next) {
             this.data = data;
             this.next = next;
         }
@@ -17,27 +19,33 @@ public class CustomLinkedList<T> {
     private Node tail;
     private int size;
 
-    public T getFirst() throws Exception {
+    @SuppressWarnings("unchecked")
+    @Override
+    public T getFirst() {
         if (size == 0) {
-            throw new Exception("list is empty!");
+            throw new LinkedListException("list is empty!");
         } else {
             return (T) this.head.data;
         }
     }
 
-    public T getLast() throws Exception {
+    @SuppressWarnings("unchecked")
+    @Override
+    public T getLast() {
         if (size == 0) {
-            throw new Exception("list is empty!");
+            throw new LinkedListException("list is empty!");
         } else {
             return (T) this.tail.data;
         }
     }
 
-    public T getAt(int index) throws Exception {
+    @SuppressWarnings("unchecked")
+    @Override
+    public T getAt(int index) {
         if (size == 0) {
-            throw new Exception("list is empty!");
+            throw new LinkedListException("list is empty!");
         } else if (index < 0 || index >= size) {
-            throw new ArrayIndexOutOfBoundsException("index is out of bounds!");
+            throw new LinkedListException("index is out of bounds!");
         } else {
             Node tempNode = this.head;
             for (int i = 1; i < index; i++) {
@@ -47,11 +55,12 @@ public class CustomLinkedList<T> {
         }
     }
 
-    public Node getNodeAt(int index) throws Exception {
+
+    private Node getNodeAt(int index) {
         if (size == 0) {
-            throw new Exception("list is empty!");
+            throw new LinkedListException("list is empty!");
         } else if (index < 0 || index >= size) {
-            throw new ArrayIndexOutOfBoundsException("index is out of bounds!");
+            throw new LinkedListException("index is out of bounds!");
         } else {
             Node tempNode = this.head;
             for (int i = 1; i < index; i++) {
@@ -61,6 +70,8 @@ public class CustomLinkedList<T> {
         }
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
     public void addLast(T data) {
         Node tempNode = new Node(data, null);
         if (this.size == 0) {
@@ -73,6 +84,8 @@ public class CustomLinkedList<T> {
         this.size++;
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
     public void addFirst(T data) {
         Node tempNode = new Node(data, this.head);
         this.head = tempNode;
@@ -82,9 +95,11 @@ public class CustomLinkedList<T> {
         this.size++;
     }
 
-    public void addAt(int index, T data) throws Exception {
+    @SuppressWarnings("unchecked")
+    @Override
+    public void addAt(int index, T data) {
         if (index < 0 || index > size) {
-            throw new ArrayIndexOutOfBoundsException("index is out of bound!");
+            throw new LinkedListException("index is out of bound!");
         }
         if (index == 0) {
             this.addFirst(data);
@@ -92,15 +107,15 @@ public class CustomLinkedList<T> {
             this.addLast(data);
         } else {
             Node tempNode = this.getNodeAt(index - 1);
-            Node newNode = new Node(data, tempNode.next);
-            tempNode.next = newNode;
+            tempNode.next = new Node(data, tempNode.next);
             size++;
         }
     }
 
-    public void removeFirst() throws Exception {
+    @Override
+    public void removeFirst() {
         if (size == 0) {
-            throw new Exception("lis is already empty!");
+            throw new LinkedListException("lis is already empty!");
         } else if (size == 1) {
             this.tail = null;
             this.head = null;
@@ -111,9 +126,10 @@ public class CustomLinkedList<T> {
         }
     }
 
-    public void removeLast() throws Exception {
+    @Override
+    public void removeLast() {
         if (size == 0) {
-            throw new Exception("lis is already empty!");
+            throw new LinkedListException("lis is already empty!");
         } else if (size == 1) {
             this.tail = null;
             this.head = null;
@@ -125,11 +141,12 @@ public class CustomLinkedList<T> {
         }
     }
 
-    public void removeAt(int index) throws Exception {
+    @Override
+    public void removeAt(int index) {
         if (size == 0) {
-            throw new Exception("lis is already empty!");
+            throw new LinkedListException("list is already empty!");
         } else if (index < 0 || index >= size) {
-            throw new ArrayIndexOutOfBoundsException("index is out of bound!");
+            throw new LinkedListException("index is out of bound!");
         } else if (index == 0) {
             this.removeFirst();
         } else if (index == size - 1) {
@@ -141,10 +158,12 @@ public class CustomLinkedList<T> {
         }
     }
 
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public void reverse() {
         if (size != 0) {
             Node cursorNode = this.head;
@@ -158,9 +177,7 @@ public class CustomLinkedList<T> {
             }
             this.tail = this.head;
             this.head = previousNode;
-
         }
-
     }
 
     public void display() {
@@ -172,11 +189,10 @@ public class CustomLinkedList<T> {
     }
 
     public static void main(String[] args) {
-        CustomLinkedList<String> list = new CustomLinkedList<String>();
+        LinkedListImpl<String> list = new LinkedListImpl<String>();
         list.addFirst("ezgi");
         list.addLast("ali");
         list.display();
     }
-
 
 }

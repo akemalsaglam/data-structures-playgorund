@@ -1,18 +1,18 @@
 package datastructures;
 
-import datastructure.CustomArrayList;
+import datastructure.impl.ArrayListImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Random;
 
-public class CustomArrayListTest {
+public class ArrayListImplTest {
 
     private Random random = new Random();
 
     @Test
     public void test1() {
-        CustomArrayList<Integer> list = new CustomArrayList<Integer>();
+        ArrayListImpl<Integer> list = new ArrayListImpl<Integer>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -25,7 +25,7 @@ public class CustomArrayListTest {
 
     @Test
     public void test2() {
-        CustomArrayList<Integer> list = new CustomArrayList<Integer>();
+        ArrayListImpl<Integer> list = new ArrayListImpl<Integer>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -52,7 +52,7 @@ public class CustomArrayListTest {
 
     @Test
     public void test3() {
-        CustomArrayList<Integer> list = new CustomArrayList<Integer>();
+        ArrayListImpl<Integer> list = new ArrayListImpl<Integer>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -88,20 +88,20 @@ public class CustomArrayListTest {
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void test4() {
-        CustomArrayList<Integer> list = new CustomArrayList<Integer>();
+        ArrayListImpl<Integer> list = new ArrayListImpl<Integer>();
         list.get(3);
     }
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void test5() {
-        CustomArrayList<Integer> list = new CustomArrayList<Integer>();
+        ArrayListImpl<Integer> list = new ArrayListImpl<Integer>();
         list.add(1);
         list.get(1);
     }
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void test6() {
-        CustomArrayList<String> list = new CustomArrayList<String>();
+        ArrayListImpl<String> list = new ArrayListImpl<String>();
         list.add(null);
         list.get(1);
     }
@@ -109,17 +109,17 @@ public class CustomArrayListTest {
     @Test()
     public void test7() {
         int randomNumber = random.nextInt(10000) + 10000;
-        CustomArrayList<Integer> list = new CustomArrayList<Integer>();
+        ArrayListImpl<Integer> list = new ArrayListImpl<Integer>();
         for (int i = 0; i < randomNumber; i++) {
             list.add(i);
         }
         Assert.assertEquals(randomNumber, list.size());
     }
 
-    @Test()
+    @Test(timeout = 1000)
     public void test8() {
         int randomNumber = random.nextInt(100000) + 100000;
-        CustomArrayList<Integer> list = new CustomArrayList<Integer>();
+        ArrayListImpl<Integer> list = new ArrayListImpl<Integer>();
         for (int i = 0; i < randomNumber; i++) {
             list.add(i);
         }

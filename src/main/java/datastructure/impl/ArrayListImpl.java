@@ -1,18 +1,24 @@
-package datastructure;
+package datastructure.impl;
 
-public class CustomArrayList<T> {
+import datastructure.ArrayList;
+import datastructure.error.ArrayListException;
+
+public class ArrayListImpl<T> implements ArrayList<T> {
 
     private T[] data;
     private int size;
     private static final int SIZE_FACTOR = 10;
     private int cursor;
 
-    public CustomArrayList() {
+    @SuppressWarnings("unchecked")
+    public ArrayListImpl() {
         this.data = (T[]) new Object[SIZE_FACTOR];
         this.size = SIZE_FACTOR;
     }
 
-    public void add(T object) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public void add(T item) {
         if (this.cursor == size) {
             T[] tempData = (T[]) new Object[this.size + SIZE_FACTOR];
 
@@ -23,29 +29,31 @@ public class CustomArrayList<T> {
             }
             this.data = tempData;
 
-            this.data[tempCursor] = object;
+            this.data[tempCursor] = item;
             tempCursor++;
 
             this.cursor = tempCursor;
             this.size += SIZE_FACTOR;
 
         } else {
-            this.data[this.cursor] = object;
+            this.data[this.cursor] = item;
             this.cursor++;
         }
 
     }
 
+    @Override
     public T get(int index) {
         if (index < 0 || index > cursor - 1) {
-            throw new ArrayIndexOutOfBoundsException("index out of bound!");
+            throw new ArrayListException("index out of bound!");
         }
         return this.data[index];
     }
 
+    @Override
     public void remove(int index) {
         if (index < 0 || index > cursor - 1) {
-            throw new ArrayIndexOutOfBoundsException("index out of bound!");
+            throw new ArrayListException("index out of bound!");
         }
         for (int i = index; i < this.data.length - 1; i++) {
             this.data[i] = this.data[i + 1];
@@ -53,6 +61,7 @@ public class CustomArrayList<T> {
         this.cursor--;
     }
 
+    @Override
     public int size() {
         return cursor;
     }
