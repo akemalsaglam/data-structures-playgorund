@@ -21,7 +21,7 @@ public class ArrayQueue<T> implements Queue<T> {
     }
 
     @Override
-    public T dequeue() throws QueueException {
+    public T dequeue() {
         if (isEmpty()) {
             throw new QueueException("queue is empty!");
         } else {

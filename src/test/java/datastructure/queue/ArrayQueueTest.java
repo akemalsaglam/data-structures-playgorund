@@ -58,4 +58,31 @@ public class ArrayQueueTest {
         arrayQueue.enqueue(1);
         Assert.assertFalse(arrayQueue.isEmpty());
     }
+
+    @Test(expected = QueueException.class)
+    public void getFront_QueueIsEmpty_ShouldThrowQueueIsEmptyException() {
+        ArrayQueue<Integer> arrayQueue = new ArrayQueue<Integer>();
+        arrayQueue.getFront();
+    }
+
+    @Test
+    public void getFront_QueueIsNotEmpty_ShouldReturnFrontItem() {
+        ArrayQueue<Integer> arrayQueue = new ArrayQueue<Integer>();
+        arrayQueue.enqueue(1);
+        Assert.assertEquals(1, (int)arrayQueue.getFront());
+    }
+
+    @Test
+    public void getFront_EnqueueDequeue_ShouldReturnFrontItem() {
+        ArrayQueue<Integer> arrayQueue = new ArrayQueue<Integer>();
+        arrayQueue.enqueue(1);
+        arrayQueue.enqueue(2);
+        arrayQueue.enqueue(3);
+        arrayQueue.enqueue(4);
+        arrayQueue.enqueue(5);
+        arrayQueue.dequeue();
+        arrayQueue.dequeue();
+        arrayQueue.dequeue();
+        Assert.assertEquals(4, (int)arrayQueue.getFront());
+    }
 }
