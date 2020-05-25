@@ -1,4 +1,4 @@
-package datastructure.error;
+package error;
 
 public class ArrayListException extends RuntimeException {
 

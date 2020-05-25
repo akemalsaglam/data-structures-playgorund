@@ -1,6 +1,6 @@
-package datastructure;
+package datastructure.stack;
 
-import datastructure.error.StackException;
+import error.StackException;
 
 public interface Stack<T> {
 

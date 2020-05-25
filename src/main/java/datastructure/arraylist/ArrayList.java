@@ -1,6 +1,6 @@
-package datastructure;
+package datastructure.arraylist;
 
-import datastructure.error.ArrayListException;
+import error.ArrayListException;
 
 public interface ArrayList<T> {
 

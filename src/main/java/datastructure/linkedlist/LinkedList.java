@@ -1,7 +1,7 @@
-package datastructure;
+package datastructure.linkedlist;
 
 
-import datastructure.error.LinkedListException;
+import error.LinkedListException;
 
 public interface LinkedList<T> {
 

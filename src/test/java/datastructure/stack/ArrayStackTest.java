@@ -1,16 +1,14 @@
-package datastructures;
+package datastructure.stack;
 
-import datastructure.Stack;
-import datastructure.error.StackException;
-import datastructure.impl.ArrayStackImpl;
+import error.StackException;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ArrayStackImplTest {
+public class ArrayStackTest {
 
     @Test
     public void test1() {
-        Stack<Integer> arrayStack = new ArrayStackImpl<Integer>();
+        Stack<Integer> arrayStack = new ArrayStack<Integer>();
         arrayStack.push(1);
         arrayStack.push(2);
         arrayStack.push(3);
@@ -25,7 +23,7 @@ public class ArrayStackImplTest {
 
     @Test
     public void test2() {
-        Stack<Integer> arrayStack = new ArrayStackImpl<Integer>();
+        Stack<Integer> arrayStack = new ArrayStack<Integer>();
         Assert.assertTrue(arrayStack.isEmpty());
 
         arrayStack.push(4);
@@ -34,7 +32,7 @@ public class ArrayStackImplTest {
 
     @Test(expected = StackException.class)
     public void test3() {
-        Stack<Integer> arrayStack = new ArrayStackImpl<Integer>(3);
+        Stack<Integer> arrayStack = new ArrayStack<Integer>(3);
         arrayStack.push(1);
         arrayStack.push(2);
         arrayStack.push(3);

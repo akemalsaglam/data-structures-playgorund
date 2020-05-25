@@ -1,21 +1,20 @@
-package datastructure.impl;
+package datastructure.stack;
 
-import datastructure.Stack;
-import datastructure.error.StackException;
+import error.StackException;
 
-public class ArrayStackImpl<T> implements Stack<T> {
+public class ArrayStack<T> implements Stack<T> {
 
     private static final int INITIAL_CAPACITY = 10;
     private int cursor = -1;
     private T[] items;
 
     @SuppressWarnings("unchecked")
-    public ArrayStackImpl() {
+    public ArrayStack() {
         items = (T[]) new Object[INITIAL_CAPACITY];
     }
 
     @SuppressWarnings("unchecked")
-    public ArrayStackImpl(int capacity) {
+    public ArrayStack(int capacity) {
         items = (T[]) new Object[capacity];
     }
 
@@ -75,7 +74,7 @@ public class ArrayStackImpl<T> implements Stack<T> {
     }
 
     public static void main(String[] args) {
-        ArrayStackImpl stack = new ArrayStackImpl();
+        ArrayStack stack = new ArrayStack();
         stack.push(1);
         stack.push(2);
         stack.push(3);

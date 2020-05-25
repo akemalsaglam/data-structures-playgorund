@@ -1,7 +1,6 @@
-package datastructure.impl;
+package datastructure.arraylist;
 
-import datastructure.ArrayList;
-import datastructure.error.ArrayListException;
+import error.ArrayListException;
 
 public class ArrayListImpl<T> implements ArrayList<T> {
 

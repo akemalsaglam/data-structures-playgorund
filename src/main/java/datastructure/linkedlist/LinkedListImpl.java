@@ -1,7 +1,6 @@
-package datastructure.impl;
+package datastructure.linkedlist;
 
-import datastructure.LinkedList;
-import datastructure.error.LinkedListException;
+import error.LinkedListException;
 
 public class LinkedListImpl<T> implements LinkedList<T> {
 

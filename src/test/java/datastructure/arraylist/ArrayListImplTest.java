@@ -1,6 +1,5 @@
-package datastructures;
+package datastructure.arraylist;
 
-import datastructure.impl.ArrayListImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
