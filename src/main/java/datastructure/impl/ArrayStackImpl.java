@@ -11,12 +11,12 @@ public class ArrayStackImpl<T> implements Stack<T> {
 
     @SuppressWarnings("unchecked")
     public ArrayStackImpl() {
-        this.items = (T[]) new Object[INITIAL_CAPACITY];
+        items = (T[]) new Object[INITIAL_CAPACITY];
     }
 
     @SuppressWarnings("unchecked")
     public ArrayStackImpl(int capacity) {
-        this.items = (T[]) new Object[capacity];
+        items = (T[]) new Object[capacity];
     }
 
     @Override
@@ -39,7 +39,7 @@ public class ArrayStackImpl<T> implements Stack<T> {
 
     @Override
     public T peek() {
-        if (this.isEmpty()) {
+        if (isEmpty()) {
             throw new StackException("stack is empty");
         } else {
             return items[cursor];
@@ -48,7 +48,7 @@ public class ArrayStackImpl<T> implements Stack<T> {
 
     @Override
     public boolean isEmpty() {
-        return this.cursor == -1;
+        return cursor == -1;
     }
 
     @Override

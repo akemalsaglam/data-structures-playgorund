@@ -7,37 +7,37 @@ public class ArrayListImpl<T> implements ArrayList<T> {
 
     private T[] data;
     private int size;
-    private static final int SIZE_FACTOR = 10;
+    private static final int INITIAL_CAPACITY = 10;
     private int cursor;
 
     @SuppressWarnings("unchecked")
     public ArrayListImpl() {
-        this.data = (T[]) new Object[SIZE_FACTOR];
-        this.size = SIZE_FACTOR;
+        data = (T[]) new Object[INITIAL_CAPACITY];
+        size = INITIAL_CAPACITY;
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public void add(T item) {
-        if (this.cursor == size) {
-            T[] tempData = (T[]) new Object[this.size + SIZE_FACTOR];
+        if (cursor == size) {
+            T[] tempData = (T[]) new Object[size + INITIAL_CAPACITY];
 
             int tempCursor = 0;
-            for (int i = 0; i < this.data.length; i++) {
-                tempData[i] = this.data[i];
+            for (int i = 0; i < data.length; i++) {
+                tempData[i] = data[i];
                 tempCursor++;
             }
-            this.data = tempData;
+            data = tempData;
 
-            this.data[tempCursor] = item;
+            data[tempCursor] = item;
             tempCursor++;
 
-            this.cursor = tempCursor;
-            this.size += SIZE_FACTOR;
+            cursor = tempCursor;
+            size += INITIAL_CAPACITY;
 
         } else {
-            this.data[this.cursor] = item;
-            this.cursor++;
+            data[cursor] = item;
+            cursor++;
         }
 
     }
@@ -47,7 +47,7 @@ public class ArrayListImpl<T> implements ArrayList<T> {
         if (index < 0 || index > cursor - 1) {
             throw new ArrayListException("index out of bound!");
         }
-        return this.data[index];
+        return data[index];
     }
 
     @Override
@@ -55,10 +55,10 @@ public class ArrayListImpl<T> implements ArrayList<T> {
         if (index < 0 || index > cursor - 1) {
             throw new ArrayListException("index out of bound!");
         }
-        for (int i = index; i < this.data.length - 1; i++) {
-            this.data[i] = this.data[i + 1];
+        for (int i = index; i < data.length - 1; i++) {
+            data[i] = data[i + 1];
         }
-        this.cursor--;
+        cursor--;
     }
 
     @Override
