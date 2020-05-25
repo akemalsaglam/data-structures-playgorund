@@ -18,7 +18,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
     private Node tail;
     private int size;
 
-    @SuppressWarnings("unchecked")
+
     @Override
     public T getFirst() {
         if (size == 0) {
