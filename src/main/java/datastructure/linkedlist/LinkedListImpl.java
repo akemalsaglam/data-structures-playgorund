@@ -187,6 +187,16 @@ public class LinkedListImpl<T> implements LinkedList<T> {
         }
     }
 
+    @Override
+    public boolean contains(T data) {
+        Node temp = this.head;
+        while (temp != null) {
+            if (temp.data == data) {return true;}
+            temp = temp.next;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         LinkedListImpl<String> list = new LinkedListImpl<String>();
         list.addFirst("ezgi");

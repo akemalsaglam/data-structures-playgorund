@@ -27,4 +27,5 @@ public interface LinkedList<T> {
 
     void reverse();
 
+    boolean contains(T data);
 }
